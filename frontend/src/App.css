@@ -1,0 +1,386 @@
+/* ───────────────────── Reset & Base ───────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 25px;
+  background: #0f0f1a;
+  color: #e2e8f0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ───────────────────── App layout ───────────────────── */
+.app {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 48px 20px 32px;
+}
+
+/* ───────────────── Background blurs ───────────────── */
+.bg-blur {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+.bg-blur-1 {
+  width: 500px;
+  height: 500px;
+  top: -120px;
+  left: -100px;
+  background: #6c63ff;
+}
+.bg-blur-2 {
+  width: 400px;
+  height: 400px;
+  bottom: -80px;
+  right: -80px;
+  background: #3b82f6;
+}
+
+/* ───────────────────── Header ───────────────────── */
+.header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(108, 99, 255, 0.15);
+  border: 1px solid rgba(108, 99, 255, 0.3);
+  border-radius: 40px;
+  padding: 6px 18px;
+  margin-bottom: 20px;
+}
+.logo-icon {
+  font-size: 20px;
+}
+.logo-text {
+  font-weight: 700;
+  font-size: 20px;
+  color: #a5b4fc;
+  letter-spacing: 0.5px;
+}
+
+.title {
+  font-size: 45px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #94a3b8;
+  line-height: 1.6;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* ───────────────────── Steps ───────────────────── */
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 32px;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+.step-active,
+.step-done {
+  opacity: 1;
+}
+
+.step-num {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(108, 99, 255, 0.2);
+  border: 2px solid #6c63ff;
+  color: #a5b4fc;
+}
+.step-done .step-num {
+  background: #6c63ff;
+  color: #fff;
+}
+
+.step-label {
+  font-size: 17px;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.step-line {
+  width: 40px;
+  height: 2px;
+  background: rgba(108, 99, 255, 0.3);
+  margin: 0 8px;
+}
+
+/* ───────────────────── Card ───────────────────── */
+.card {
+  background: rgba(22, 22, 40, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ───────────────────── Dropzone ───────────────────── */
+.dropzone {
+  border: 2px dashed rgba(108, 99, 255, 0.35);
+  border-radius: 14px;
+  padding: 40px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  background: rgba(108, 99, 255, 0.04);
+}
+.dropzone:hover,
+.dropzone-active {
+  border-color: #6c63ff;
+  background: rgba(108, 99, 255, 0.1);
+}
+.dropzone-has-file {
+  padding: 18px 24px;
+  border-style: solid;
+  border-color: rgba(108, 99, 255, 0.3);
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.upload-icon {
+  font-size: 36px;
+  margin-bottom: 4px;
+}
+.dropzone-text {
+  font-size: 22px;
+  font-weight: 600;
+  color: #c7d2fe;
+}
+.dropzone-hint {
+  font-size: 17px;
+  color: #64748b;
+}
+
+/* File info inside dropzone */
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+}
+.file-icon {
+  font-size: 28px;
+}
+.file-name {
+  font-size: 17px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+.file-size {
+  font-size: 16px;
+  color: #64748b;
+  margin-top: 2px;
+}
+.file-remove {
+  margin-left: auto;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.file-remove:hover {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+/* ───────────────────── Input ───────────────────── */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.input-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #94a3b8;
+  letter-spacing: 0.3px;
+}
+.input {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(108, 99, 255, 0.25);
+  background: rgba(15, 15, 30, 0.6);
+  color: #e2e8f0;
+  font-size: 19px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input::placeholder {
+  color: #475569;
+}
+.input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+/* ───────────────────── Button ───────────────────── */
+.btn {
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #6c63ff 0%, #3b82f6 100%);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(108, 99, 255, 0.35);
+}
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Spinner */
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ───────────────────── Alerts ───────────────────── */
+.alert {
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.alert-success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #4ade80;
+}
+.alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+}
+
+/* ───────────────────── Summary Card ───────────────────── */
+.summary-card {
+  margin-top: 28px;
+  background: rgba(22, 22, 40, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: 20px;
+  padding: 28px 32px;
+}
+.summary-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #c7d2fe;
+  margin-bottom: 16px;
+}
+.summary-body {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #cbd5e1;
+}
+.summary-body strong {
+  color: #e2e8f0;
+}
+
+/* ───────────────────── Footer ───────────────────── */
+.footer {
+  text-align: center;
+  margin-top: 36px;
+  font-size: 15px;
+  color: #475569;
+}
+.footer strong {
+  color: #6c63ff;
+}
+
+/* ───────────────────── Responsive ───────────────────── */
+@media (max-width: 480px) {
+  .container {
+    padding: 32px 16px 24px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .card {
+    padding: 24px 18px;
+  }
+  .step-label {
+    display: none;
+  }
+}
