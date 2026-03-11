@@ -1,5 +1,7 @@
 const swaggerJsdoc = require("swagger-jsdoc");
 
+const serverUrl = process.env.BACKEND_URL || "http://localhost:5000";
+
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -14,8 +16,8 @@ const options = {
     },
     servers: [
       {
-        url: "http://localhost:5000",
-        description: "Local development server",
+        url: serverUrl,
+        description: serverUrl.includes("localhost") ? "Local development server" : "Production server",
       },
     ],
   },
