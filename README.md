@@ -146,6 +146,62 @@ Rabbitt.Ai/
 
 ---
 
+## 🐳 Docker Hub
+
+Pre-built images are published on Docker Hub:
+
+| Image | Link |
+|-------|------|
+| **Backend** | [bharatkn786/rabbitt-ai-backend](https://hub.docker.com/r/bharatkn786/rabbitt-ai-backend) |
+| **Frontend** | [bharatkn786/rabbitt-ai-frontend](https://hub.docker.com/r/bharatkn786/rabbitt-ai-frontend) |
+
+### Pull & Run from Docker Hub
+
+```bash
+docker pull bharatkn786/rabbitt-ai-backend:latest
+docker pull bharatkn786/rabbitt-ai-frontend:latest
+```
+
+Or use the `docker-compose.yml` below to run both services together.
+
+### `docker-compose.yml`
+
+```yaml
+services:
+  backend:
+    build: ./backend
+    container_name: rabbitt-backend
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./backend/.env
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        REACT_APP_API_URL: http://localhost:5000
+    container_name: rabbitt-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+```
+
+```bash
+docker-compose up --build
+```
+
+| Service | URL |
+|---------|-----|
+| Frontend | http://localhost:3000 |
+| Backend API | http://localhost:5000 |
+| Swagger Docs | http://localhost:5000/api-docs |
+
+---
+
 ## ⚙️ CI/CD Pipeline
 
 The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on PRs and pushes to `main`:
