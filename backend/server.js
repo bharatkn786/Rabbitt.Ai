@@ -58,9 +58,12 @@ app.use((err, _req, res, _next) => {
   res.status(500).json({ error: "Internal server error" });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Swagger docs at http://localhost:${PORT}/api-docs`);
-});
+// Only start the HTTP server when running directly (not on Vercel serverless)
+if (process.env.VERCEL !== "1") {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Swagger docs at http://localhost:${PORT}/api-docs`);
+  });
+}
 
 module.exports = app;
