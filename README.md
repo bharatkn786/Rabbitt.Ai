@@ -1,7 +1,6 @@
 # 📊 Sales Insight Automator — Rabbitt AI
 
-A containerized full-stack application that lets users upload sales data (CSV/XLSX), generates an AI-powered executive summary via **Groq (Llama 3.3 70B)**, and emails the report directly to the specified recipient.
-
+A containerized full-stack application that lets users upload sales data (CSV/XLSX), generates an AI-powered executive summary via **Groq (Llama 3.3 70B)**, and emails the report directly.
 ---
 
 ## ✨ Features
