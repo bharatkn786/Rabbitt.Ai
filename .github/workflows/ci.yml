@@ -48,4 +48,5 @@ jobs:
     needs: [backend, frontend]
     steps:
       - uses: actions/checkout@v4
+      - run: touch backend/.env
       - run: docker compose config --quiet
